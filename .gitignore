@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!init.lua
+!/lua/
+!lua/*
+!README.md
