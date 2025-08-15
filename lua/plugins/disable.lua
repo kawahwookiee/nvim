@@ -1,0 +1,16 @@
+if true then
+  return {
+    { "bufferline.nvim", enabled = false },
+    { "tokyonight.nvim", enabled = false },
+    { "mini.ai", enabled = false },
+    { "dashboard-nvim", enabled = false },
+    { "dressing.nvim", enabled = false },
+    { "neoconf.nvim", enabled = false },
+    { "neodev.nvim", enabled = false },
+    { "nvim-notify.nvim", enabled = false },
+    { "blink.cmp", enabled = false },
+    { "nvim-cmp", enabled = true },
+    { "nvim-ts-autotag", enabled = false },
+    { "persistence.nvim", enabled = false },
+  }
+end
