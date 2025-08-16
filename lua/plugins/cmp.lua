@@ -34,7 +34,7 @@ return {
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
-        { name = "parrot" },
+        { name = "git" },
       }),
       formatting = {
         format = function(_, item)
