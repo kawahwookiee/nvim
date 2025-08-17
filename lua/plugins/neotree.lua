@@ -4,32 +4,18 @@ return {
   cmd = "Neotree",
   keys = {
     {
-      "<leader>e",
+      "<leader>E",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root(), position = "float" })
       end,
       desc = "Explorer NeoTree (Root Dir)",
     },
     {
-      "<leader>E",
+      "<leader>e",
       function()
         require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "float" })
       end,
       desc = "Explorer NeoTree (cwd)",
-    },
-    {
-      "<leader>ge",
-      function()
-        require("neo-tree.command").execute({ source = "git_status", toggle = true, position = "float" })
-      end,
-      desc = "Git Explorer",
-    },
-    {
-      "<leader>be",
-      function()
-        require("neo-tree.command").execute({ source = "buffers", toggle = true, position = "float" })
-      end,
-      desc = "Buffer Explorer",
     },
   },
   deactivate = function()
