@@ -11,6 +11,8 @@ return {
       preset = "enter",
       ["<Esc>"] = { "hide", "fallback" },
       ["C-e"] = { "cancel", "fallback" },
+      ["<Left>"] = { "cancel", "fallback" },
+      ["<Right>"] = { "cancel", "fallback" },
     },
   },
 }

@@ -5,7 +5,7 @@
 vim.api.nvim_command("set mouse=")
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.keymap.set({ "n", "v" }, "d", '"_d')
-vim.g.python3_host_prog = "python3"
+-- vim.g.python3_host_prog = "python3"
 vim.o.termguicolors = true
 vim.g.lazyvim_picker = "snacks"
 
