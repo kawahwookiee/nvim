@@ -8,9 +8,10 @@ if true then
     { "neoconf.nvim", enabled = false },
     { "neodev.nvim", enabled = false },
     { "nvim-notify.nvim", enabled = false },
-    { "blink.cmp", enabled = false },
-    { "nvim-cmp", enabled = true },
+    { "nvim-cmp", enabled = false },
     { "nvim-ts-autotag", enabled = false },
     { "persistence.nvim", enabled = false },
+    { "trouble.nvim", enabled = false },
+    { "noice.nvim", enabled = false },
   }
 end

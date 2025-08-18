@@ -14,11 +14,6 @@ function OpenDiagnosticIfNoFloat()
       return
     end
   end
-  -- THIS IS FOR BUILTIN LSP
-  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.star",
-    command = "set filetype=python",
-  })
   vim.diagnostic.open_float(0, {
     scope = "cursor",
     focusable = false,
@@ -37,4 +32,9 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   pattern = "*",
   command = "lua OpenDiagnosticIfNoFloat()",
   group = "lsp_diagnostics_hold",
+})
+-- This is for stupid Starlark
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.star",
+  command = "set filetype=python",
 })

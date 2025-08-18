@@ -1,5 +1,4 @@
-return {
-  {
+return {{
     "catppuccin/nvim",
     lazy = false,
     priority = 1000,
@@ -61,22 +60,18 @@ return {
           },
         },
         navic = { enabled = true, custom_bg = "lualine" },
-        neotest = true,
-        neotree = true,
         noice = true,
-        notify = true,
         semantic_tokens = true,
-        telescope = true,
         treesitter = true,
         treesitter_context = true,
         which_key = true,
       },
     },
-  },
+},
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
     },
-  },
+  }
 }
