@@ -2,46 +2,76 @@ return {
   "snacks.nvim",
   priority = 1000,
   lazy = false,
-  ---@module "snacks"
-  ---@type snacks.Config
-  opts = {
-    lazygit = { enabled = true },
-    explorer = { enabled = true },
-    picker = {
-      enabled = true,
-      win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
-      sources = {
-        explorer = {
-          auto_close = true,
-          layout = { preset = "sidebar" },
+  opts = function()
+    local default_layout = {
+      layout = {
+        box = "horizontal",
+        backdrop = false,
+        width = 0.8,
+        height = 0.9,
+        border = "none",
+        {
+          box = "vertical",
+          {
+            win = "input",
+            height = 1,
+            border = "rounded",
+            title = string.format("{title}{live} %s {flags}", LazyVim.root()),
+            title_pos = "center",
+          },
+          { win = "list", height = 0.3, title = " Results ", title_pos = "center", border = "rounded" },
+          { win = "preview", title = "{preview:Preview}", border = "rounded", title_pos = "center" },
         },
-        grep = {
-          auto_close = true,
-          layout = {
-            layout = {
-              box = "horizontal",
-              backdrop = false,
-              width = 0.8,
-              height = 0.9,
-              border = "none",
-              {
-                box = "vertical",
-                {
-                  win = "input",
-                  height = 1,
-                  border = "rounded",
-                  title = string.format("{title}{live} %s {flags}", LazyVim.root()),
-                  title_pos = "center",
-                },
-                { win = "list", height = 0.3, title = " Results ", title_pos = "center", border = "rounded" },
-                { win = "preview", title = "{preview:Preview}", border = "rounded", title_pos = "center" },
-              },
+      },
+    }
+    local default_cfg = { auto_close = true, layout = default_layout }
+    ---@module "snacks"
+    ---@type snacks.Config
+    local opts = {
+      lazygit = { enabled = true },
+      notifier = { enabled = true },
+      notify = { enabled = true },
+      explorer = { enabled = true },
+      quickfile = { enabled = true },
+      indent = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      picker = {
+        enabled = true,
+        win = {
+          list = {
+            keys = {
+              ["<S-PageDown>"] = { "preview_scroll_down", mode = { "n", "i" } },
+              ["<S-PageUp>"] = { "preview_scroll_up", mode = { "n", "i" } },
+              ["<PageUp>"] = { "list_scroll_up", mode = { "n", "i" } },
+              ["<PageDown>"] = { "list_scroll_down", mode = { "n", "i" } },
+            },
+          },
+          input = {
+            keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ["<S-PageDown>"] = { "preview_scroll_down", mode = { "n", "i" } },
+              ["<S-PageUp>"] = { "preview_scroll_up", mode = { "n", "i" } },
+              ["<PageUp>"] = { "list_scroll_up", mode = { "n", "i" } },
+              ["<PageDown>"] = { "list_scroll_down", mode = { "n", "i" } },
             },
           },
         },
+        sources = {
+          explorer = { auto_close = true }, --, layout = { preset = "sidebar" } },
+          grep = default_cfg,
+          lsp_declarations = default_cfg,
+          lsp_definitions = default_cfg,
+          lsp_implementations = default_cfg,
+          lsp_references = default_cfg,
+          notifications = default_cfg,
+        },
       },
-    },
-  },
+    }
+    return opts
+  end,
   keys = {
     { "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
     { "<leader><space>", false },
@@ -55,7 +85,8 @@ return {
     {
       "<leader>E",
       function()
-        Snacks.picker.explorer({ cwd = LazyVim.root() })
+        local cur_dir = require("utils").GetCurrentDir()
+        Snacks.picker.explorer({ cwd = cur_dir })
       end,
       desc = "File Explorer (Root)",
     },
