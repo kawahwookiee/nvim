@@ -1,4 +1,5 @@
-return {{
+return {
+  {
     "catppuccin/nvim",
     lazy = false,
     priority = 1000,
@@ -46,7 +47,7 @@ return {{
         illuminate = true,
         indent_blankline = { enabled = true },
         leap = true,
-        lsp_trouble = true,
+        lsp_trouble = false,
         mason = true,
         markdown = true,
         mini = true,
@@ -67,11 +68,11 @@ return {{
         which_key = true,
       },
     },
-},
+  },
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
     },
-  }
+  },
 }
