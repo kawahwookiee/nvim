@@ -6,6 +6,7 @@ return {
     require("aerial").setup({ attach_mode = "global", backends = { "lsp", "treesitter", "markdown", "man" } })
   end,
   opts = function()
+    ---@type snacks.picker.layout.Config
     local default_layout = {
       layout = {
         box = "horizontal",
@@ -27,8 +28,8 @@ return {
         },
       },
     }
+    ---@type snacks.picker.Config
     local default_cfg = { auto_close = true, layout = default_layout }
-    ---@module "snacks"
     ---@type snacks.Config
     local opts = {
       lazygit = { enabled = true },
@@ -79,12 +80,16 @@ return {
     {
       "<C-t>",
       function()
-        require("aerial").snacks_picker({
-          layout = {
-            preset = "right",
-            preview = "main",
-          },
-        })
+        require("aerial").snacks_picker(
+          ---@type snacks.picker.layout.Config
+          {
+            layout = {
+              preset = "right",
+              layout = { min_width = 0.1, resize = true },
+              preview = "main",
+            },
+          }
+        )
       end,
       desc = "Aerial (Symbols)",
     },

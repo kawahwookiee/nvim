@@ -9,8 +9,4 @@ return {
   {
     "folke/todo-comments.nvim",
   },
-  {
-    "stevearc/stickybuf.nvim",
-    opts = {},
-  },
 }

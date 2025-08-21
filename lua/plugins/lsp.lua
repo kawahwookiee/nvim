@@ -5,7 +5,6 @@ return {
     "mason.nvim",
     { "mason-org/mason-lspconfig.nvim", config = function() end },
   },
-  ---@class PluginLspOpts
   opts = {
     -- options for vim.diagnostic.config()
     ---@type vim.diagnostic.Opts
