@@ -2,6 +2,9 @@ return {
   "snacks.nvim",
   priority = 1000,
   lazy = false,
+  init = function()
+    require("aerial").setup({ attach_mode = "global", backends = { "lsp", "treesitter", "markdown", "man" } })
+  end,
   opts = function()
     local default_layout = {
       layout = {
@@ -60,7 +63,7 @@ return {
           },
         },
         sources = {
-          explorer = { auto_close = true }, --, layout = { preset = "sidebar" } },
+          explorer = { auto_close = true },
           grep = default_cfg,
           lsp_declarations = default_cfg,
           lsp_definitions = default_cfg,
@@ -73,6 +76,18 @@ return {
     return opts
   end,
   keys = {
+    {
+      "<C-t>",
+      function()
+        require("aerial").snacks_picker({
+          layout = {
+            preset = "right",
+            preview = "main",
+          },
+        })
+      end,
+      desc = "Aerial (Symbols)",
+    },
     { "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
     { "<leader><space>", false },
     {

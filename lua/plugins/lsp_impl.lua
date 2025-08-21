@@ -1,9 +1,9 @@
-local lspconfig = require("lspconfig")
 return {
   "neovim/nvim-lspconfig",
   ---@class PluginLspOpts
   opts = {
     servers = {
+      ---@type vim.lsp.Config
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
@@ -33,6 +33,7 @@ return {
           },
         },
       },
+      ---@type vim.lsp.Config
       lua_ls = {
         -- mason = false, -- set to false if you don't want this server to be installed with mason
         -- Use this to add any additional keymaps
@@ -66,15 +67,12 @@ return {
           },
         },
       },
+      ---@type vim.lsp.Config
       ruff = {
         autostart = false,
       },
+      ---@type vim.lsp.Config
       pyright = {
-        root_dir = function(fname)
-          return lspconfig.util.root_pattern("pyproject.toml", ".git", "setup.py", "setup.cfg", "requirements.txt")(
-            fname
-          ) or vim.fs.dirname(fname)
-        end,
         settings = {
           pyright = {
             disableOrganizeImports = true,
@@ -90,6 +88,7 @@ return {
           },
         },
       },
+      ---@type vim.lsp.Config
       gopls = {
         settings = {
           gopls = {
@@ -126,26 +125,6 @@ return {
           },
         },
       },
-    },
-    setup = {
-      -- gopls = function(_, opts)
-      --   -- workaround for gopls not supporting semanticTokensProvider
-      --   -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-      --   LazyVim.lsp.on_attach(function(client, _)
-      --     if not client.server_capabilities.semanticTokensProvider then
-      --       local semantic = client.config.capabilities.textDocument.semanticTokens
-      --       client.server_capabilities.semanticTokensProvider = {
-      --         full = true,
-      --         legend = {
-      --           tokenTypes = semantic.tokenTypes,
-      --           tokenModifiers = semantic.tokenModifiers,
-      --         },
-      --         range = true,
-      --       }
-      --     end
-      --   end, "gopls")
-      --   -- end workaround
-      -- end,
     },
   },
 }
