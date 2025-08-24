@@ -28,8 +28,6 @@ return {
         },
       },
     }
-    ---@type snacks.picker.Config
-    local default_cfg = { auto_close = true, layout = default_layout }
     ---@type snacks.Config
     local opts = {
       lazygit = { enabled = true },
@@ -63,14 +61,18 @@ return {
             },
           },
         },
+        auto_close = true,
+        layout = default_layout,
         sources = {
-          explorer = { auto_close = true },
-          grep = default_cfg,
-          lsp_declarations = default_cfg,
-          lsp_definitions = default_cfg,
-          lsp_implementations = default_cfg,
-          lsp_references = default_cfg,
-          notifications = default_cfg,
+          ---@type snacks.picker.Config
+          explorer = {
+            auto_close = true,
+            win = { list = { resize = true } },
+            layout = "sidebar",
+            preview = function()
+              return false
+            end,
+          },
         },
       },
     }
