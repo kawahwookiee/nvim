@@ -85,17 +85,21 @@ return {
         require("aerial").snacks_picker(
           ---@type snacks.picker.layout.Config
           {
-            layout = {
-              preset = "right",
-              layout = { min_width = 0.1, resize = true },
-              preview = "main",
-            },
+            layout = "right",
           }
         )
       end,
       desc = "Aerial (Symbols)",
     },
-    { "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
+    -- { "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
+    {
+      "<leader>/",
+      function()
+        local cur_dir = require("utils").GetCurrentDir()
+        Snacks.picker.grep({ cwd = cur_dir, follow = true })
+      end,
+      desc = "Grep (cwd)",
+    },
     { "<leader><space>", false },
     {
       "<leader>e",
