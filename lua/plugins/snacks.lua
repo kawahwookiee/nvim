@@ -32,16 +32,16 @@ return {
     local opts = {
       lazygit = { enabled = true },
       notifier = { enabled = true },
-      notify = { enabled = true },
       explorer = { enabled = true },
       quickfile = { enabled = true },
       indent = { enabled = true },
       scope = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
       picker = {
         enabled = true,
+        ui_select = true,
         win = {
           list = {
             keys = {
@@ -62,17 +62,18 @@ return {
           },
         },
         auto_close = true,
-        layout = default_layout,
+        layout = function(source)
+          if source == "explorer" then
+            return {
+              layout = { hidden = "preview" },
+              auto_hide = { "input" },
+            }
+          end
+          return default_layout
+        end,
         sources = {
           ---@type snacks.picker.Config
-          explorer = {
-            auto_close = true,
-            win = { list = { resize = true } },
-            layout = "sidebar",
-            preview = function()
-              return false
-            end,
-          },
+          explorer = { auto_close = true },
         },
       },
     }
@@ -82,12 +83,7 @@ return {
     {
       "<C-t>",
       function()
-        require("aerial").snacks_picker(
-          ---@type snacks.picker.layout.Config
-          {
-            layout = "right",
-          }
-        )
+        require("aerial").snacks_picker({ layout = "right" })
       end,
       desc = "Aerial (Symbols)",
     },
