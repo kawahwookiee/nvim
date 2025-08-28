@@ -64,16 +64,19 @@ return {
         auto_close = true,
         layout = function(source)
           if source == "explorer" then
+            ---@type snacks.picker.layout.Config
             return {
-              layout = { hidden = "preview" },
-              auto_hide = { "input" },
+              layout = { resize = true },
             }
           end
           return default_layout
         end,
         sources = {
           ---@type snacks.picker.Config
-          explorer = { auto_close = true },
+          explorer = {
+            auto_close = true,
+            layout = { hidden = { "preview", "input" }, auto_hide = { "input" } },
+          },
         },
       },
     }
