@@ -27,7 +27,6 @@ return {
       sh = { "shfmt" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       go = { "goimports", "gofumpt" },
-      -- python = { "isort", "black" },
       ["*"] = { "trim_newlines", "trim_whitespace" },
     },
   },

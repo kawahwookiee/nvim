@@ -39,6 +39,17 @@ return {
       scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      gitbrowse = {
+        enabled = true,
+        url_patterns = {
+          ["gitea%.*"] = {
+            branch = "/src/branch/{branch}",
+            file = "/src/branch/{branch}/{file}#L{line_start}-L{line_end}",
+            permalink = "/src/commit/{commit}/{file}#L{line_start}-L{line_end}",
+            commit = "/src/commit/{commit}",
+          },
+        },
+      },
       picker = {
         enabled = true,
         ui_select = true,
