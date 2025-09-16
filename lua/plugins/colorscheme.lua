@@ -1,5 +1,17 @@
 return {
   {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+    opts = {
+      no_italic = true,
+      integrations = {
+        notify = true,
+        mini = true,
+      },
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     lazy = false,
     opts = function()
@@ -21,7 +33,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
