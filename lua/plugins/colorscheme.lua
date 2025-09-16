@@ -1,93 +1,27 @@
 return {
   {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
+    "nvim-lualine/lualine.nvim",
     lazy = false,
-    priority = 1000,
-    init = function()
-      vim.g.moonflyItalics = false
+    opts = function()
+      local opts = {
+        options = {
+          theme = "auto",
+          section_separators = "",
+          component_separators = "",
+        },
+        sections = {
+          lualine_c = { { "filename", path = 1 } },
+        },
+        extensions = { "lazy" },
+      }
+      vim.o.laststatus = vim.g.lualine_laststatus
+      return opts
     end,
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "moonfly",
+      colorscheme = "tokyonight",
     },
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   name = "catppuccin",
-  --   opts = {
-  --     flavour = "macchiato",
-  --     transparent_background = false, -- disables setting the background color.
-  --     show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-  --     term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
-  --     dim_inactive = {
-  --       enabled = false, -- dims the background color of inactive window
-  --       shade = "dark",
-  --       percentage = 0.15, -- percentage of the shade to apply to the inactive window
-  --     },
-  --     no_italic = true, -- Force no italic
-  --     no_bold = false, -- Force no bold
-  --     no_underline = false, -- Force no underline
-  --     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-  --       comments = { "italic" }, -- Change the style of comments
-  --       conditionals = {},
-  --       loops = {},
-  --       functions = {},
-  --       keywords = {},
-  --       strings = {},
-  --       variables = {},
-  --       numbers = {},
-  --       booleans = {},
-  --       properties = {},
-  --       types = {},
-  --       operators = {},
-  --       -- miscs = {}, -- Uncomment to turn off hard-coded styles
-  --     },
-  --     color_overrides = {},
-  --     custom_highlights = {},
-  --     default_integrations = true,
-  --     integrations = {
-  --       aerial = true,
-  --       alpha = true,
-  --       blink_cmp = true,
-  --       cmp = true,
-  --       dashboard = true,
-  --       flash = true,
-  --       gitsigns = true,
-  --       headlines = true,
-  --       illuminate = true,
-  --       indent_blankline = { enabled = true },
-  --       leap = true,
-  --       lsp_trouble = false,
-  --       mason = true,
-  --       markdown = true,
-  --       mini = true,
-  --       native_lsp = {
-  --         enabled = true,
-  --         underlines = {
-  --           errors = { "undercurl" },
-  --           hints = { "undercurl" },
-  --           warnings = { "undercurl" },
-  --           information = { "undercurl" },
-  --         },
-  --       },
-  --       navic = { enabled = true, custom_bg = "lualine" },
-  --       noice = true,
-  --       semantic_tokens = true,
-  --       treesitter = true,
-  --       treesitter_context = true,
-  --       which_key = true,
-  --     },
-  --   },
-  -- },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "catppuccin",
-  --   },
-  -- },
 }
