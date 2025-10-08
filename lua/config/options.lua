@@ -8,6 +8,7 @@ vim.keymap.set({ "n", "v" }, "d", '"_d')
 -- vim.g.python3_host_prog = "python3"
 vim.o.termguicolors = true
 vim.g.lazyvim_picker = "snacks"
+vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver100-Cursor,r-cr-o:hor20"
 
 -- [[ Context ]]
 -- vim.g.autoformat = false
