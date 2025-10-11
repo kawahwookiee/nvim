@@ -5,14 +5,18 @@ return {
     opts = {},
   },
   {
-    "Mofiqul/vscode.nvim",
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    name = "vscode",
     opts = {
-      color_overrides = {
-        vscYellow = "#C8A309",
+      flavour = "auto",
+      background = {
+        light = "latte",
+        dark = "mocha",
       },
+      no_italic = true,
+      term_colors = true,
+      -- color_overrides = { mocha = { base = "#1d1d1e" } },
     },
   },
   {
@@ -37,7 +41,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "catppuccin",
     },
   },
 }

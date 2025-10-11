@@ -70,6 +70,14 @@ return {
       ---@type vim.lsp.Config
       ruff = {
         autostart = false,
+        init_options = {
+          settings = { logLevel = "debug" },
+        },
+        capabilities = {
+          general = {
+            positionEncodings = { "utf-16" },
+          },
+        },
       },
       ---@type vim.lsp.Config
       pyright = {
@@ -83,7 +91,7 @@ return {
               useLibraryCodeForTypes = true,
               autoImportCompletions = true,
               typeCheckingMode = "standard",
-              diagnosticMode = "workspace",
+              diagnosticMode = "openFilesOnly",
             },
           },
         },
@@ -125,6 +133,13 @@ return {
           },
         },
       },
+    },
+    setup = {
+      ["ruff"] = function()
+        LazyVim.lsp.on_attach(function(client, _)
+          client.server_capabilities.hoverProvider = false
+        end, "ruff")
+      end,
     },
   },
 }

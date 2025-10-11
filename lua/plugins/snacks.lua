@@ -32,6 +32,8 @@ return {
     local opts = {
       lazygit = { enabled = true },
       notifier = { enabled = true },
+      notify = { enabled = true },
+      input = { enabled = true },
       explorer = { enabled = true },
       quickfile = { enabled = true },
       indent = { enabled = true },
