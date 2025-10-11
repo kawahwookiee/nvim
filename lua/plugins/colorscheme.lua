@@ -1,24 +1,18 @@
 return {
   {
     "f-person/auto-dark-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    lazy = false,
+    opts = {},
   },
   {
-    "catppuccin/nvim",
-    lazy = true,
-    name = "catppuccin",
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+    name = "vscode",
     opts = {
-      no_italic = true,
-      integrations = {
-        notify = true,
-        mini = true,
+      color_overrides = {
+        vscYellow = "#C8A309",
       },
-      term_colors = true,
-      dim_incative = { enabled = true },
     },
   },
   {
@@ -43,7 +37,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "vscode",
     },
   },
 }
