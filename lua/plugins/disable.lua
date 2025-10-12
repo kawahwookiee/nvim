@@ -9,7 +9,6 @@ if true then
     { "nvim-cmp", enabled = false },
     { "nvim-ts-autotag", enabled = false },
     { "persistence.nvim", enabled = false },
-    { "noice.nvim", enabled = false },
     { "neo-tree.nvim", enabled = false },
   }
 end
