@@ -68,15 +68,15 @@ return {
         },
       },
       ---@type vim.lsp.Config
-      ty = {
-        settings = {
-          ty = {
-            diagnosticMode = "workspace",
-            inlayHints = { variableTypes = false, callArgumentNames = false },
-            experimental = { rename = true, autoImport = true },
-          },
-        },
-      },
+      -- ty = {
+      --   settings = {
+      --     ty = {
+      --       diagnosticMode = "workspace",
+      --       inlayHints = { variableTypes = false, callArgumentNames = false },
+      --       experimental = { rename = true, autoImport = true },
+      --     },
+      --   },
+      -- },
       ---@type vim.lsp.Config
       ruff = {
         init_options = {
@@ -89,22 +89,22 @@ return {
         -- },
       },
       ---@type vim.lsp.Config
-      -- pyright = {
-      --   settings = {
-      --     pyright = {
-      --       disableOrganizeImports = true,
-      --     },
-      --     python = {
-      --       analysis = {
-      --         autoSearchPaths = true,
-      --         useLibraryCodeForTypes = true,
-      --         autoImportCompletions = true,
-      --         typeCheckingMode = "standard",
-      --         diagnosticMode = "openFilesOnly",
-      --       },
-      --     },
-      --   },
-      -- },
+      pyright = {
+        settings = {
+          pyright = {
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              autoImportCompletions = true,
+              typeCheckingMode = "standard",
+              diagnosticMode = "openFilesOnly",
+            },
+          },
+        },
+      },
       ---@type vim.lsp.Config
       gopls = {
         settings = {
