@@ -68,18 +68,25 @@ return {
         },
       },
       ---@type vim.lsp.Config
-      ty = {},
+      ty = {
+        settings = {
+          ty = {
+            diagnosticMode = "workspace",
+            inlayHints = { variableTypes = false, callArgumentNames = false },
+            experimental = { rename = true, autoImport = true },
+          },
+        },
+      },
       ---@type vim.lsp.Config
       ruff = {
-        autostart = false,
         init_options = {
           settings = { logLevel = "debug" },
         },
-        capabilities = {
-          general = {
-            positionEncodings = { "utf-16" },
-          },
-        },
+        -- capabilities = {
+        --   general = {
+        --     positionEncodings = { "utf-16" },
+        --   },
+        -- },
       },
       ---@type vim.lsp.Config
       -- pyright = {
