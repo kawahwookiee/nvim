@@ -68,6 +68,8 @@ return {
         },
       },
       ---@type vim.lsp.Config
+      ty = {},
+      ---@type vim.lsp.Config
       ruff = {
         autostart = false,
         init_options = {
@@ -80,22 +82,22 @@ return {
         },
       },
       ---@type vim.lsp.Config
-      pyright = {
-        settings = {
-          pyright = {
-            disableOrganizeImports = true,
-          },
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              autoImportCompletions = true,
-              typeCheckingMode = "standard",
-              diagnosticMode = "openFilesOnly",
-            },
-          },
-        },
-      },
+      -- pyright = {
+      --   settings = {
+      --     pyright = {
+      --       disableOrganizeImports = true,
+      --     },
+      --     python = {
+      --       analysis = {
+      --         autoSearchPaths = true,
+      --         useLibraryCodeForTypes = true,
+      --         autoImportCompletions = true,
+      --         typeCheckingMode = "standard",
+      --         diagnosticMode = "openFilesOnly",
+      --       },
+      --     },
+      --   },
+      -- },
       ---@type vim.lsp.Config
       gopls = {
         settings = {

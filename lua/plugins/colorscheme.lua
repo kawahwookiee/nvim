@@ -7,6 +7,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = false,
     priority = 1000,
     opts = {
       flavour = "auto",
@@ -17,6 +18,13 @@ return {
       no_italic = true,
       term_colors = true,
       -- color_overrides = { mocha = { base = "#1d1d1e" } },
+    },
+  },
+  { "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "vscode",
     },
   },
   {
@@ -37,11 +45,5 @@ return {
       vim.o.laststatus = vim.g.lualine_laststatus
       return opts
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
   },
 }
