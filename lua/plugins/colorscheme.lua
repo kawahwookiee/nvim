@@ -38,7 +38,7 @@ return {
           component_separators = "",
         },
         sections = {
-          lualine_c = { { "filename", path = 1 } },
+          lualine_c = { { "filename", path = 3 } },
         },
         extensions = { "lazy" },
       }
