@@ -82,11 +82,11 @@ return {
         init_options = {
           settings = { logLevel = "debug" },
         },
-        -- capabilities = {
-        --   general = {
-        --     positionEncodings = { "utf-16" },
-        --   },
-        -- },
+        capabilities = {
+          general = {
+            positionEncodings = { "utf-16" },
+          },
+        },
       },
       ---@type vim.lsp.Config
       pyright = {

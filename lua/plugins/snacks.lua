@@ -41,6 +41,7 @@ return {
       scroll = { enabled = false },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      terminal = { enabled = true },
       gitbrowse = {
         enabled = true,
         url_patterns = {

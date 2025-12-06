@@ -15,7 +15,7 @@ return {
   },
   opts = {
     formatters = {
-      shfmt = { args = { "-filename", "$FILENAME", "-i", "4" } },
+      shfmt = { args = { "-filename", "$FILENAME", "-i", "2" } },
     },
     default_format_opts = {
       timeout_ms = 3000,
@@ -27,6 +27,8 @@ return {
       lua = { "stylua" },
       fish = { "fish_indent" },
       sh = { "shfmt" },
+      bash = { "shfmt" },
+      zsh = { "shfmt" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       go = { "goimports", "gofumpt" },
       ["*"] = { "trim_newlines", "trim_whitespace" },
