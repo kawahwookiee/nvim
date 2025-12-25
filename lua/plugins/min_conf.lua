@@ -28,7 +28,7 @@ return {
   },
   {
     "noice.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
@@ -38,5 +38,8 @@ return {
         lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
+  },
+  {
+    "sindrets/diffview.nvim",
   },
 }
