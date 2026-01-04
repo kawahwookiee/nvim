@@ -38,12 +38,34 @@ return {
           component_separators = "",
         },
         sections = {
-          lualine_c = { { "filename", path = 3 } },
+          lualine_c = {
+            { "filename", path = 3 },
+            { "navic", color_correction = "dynamic" },
+          },
         },
         extensions = { "lazy" },
       }
       vim.o.laststatus = vim.g.lualine_laststatus
       return opts
+    end,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    lazy = true,
+    init = function()
+      vim.g.navic_silence = true
+    end,
+    opts = function()
+      Snacks.util.lsp.on({ method = "textDocument/documentSymbol" }, function(buffer, client)
+        require("nvim-navic").attach(client, buffer)
+      end)
+      return {
+        separator = " ",
+        highlight = true,
+        depth_limit = 5,
+        icons = LazyVim.config.icons.kinds,
+        lazy_update_context = true,
+      }
     end,
   },
 }
