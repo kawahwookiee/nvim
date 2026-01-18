@@ -15,7 +15,7 @@ return {
       float = {
         scope = "line",
         border = "rounded",
-        source = "always",
+        source = true,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         focusable = false,
       },

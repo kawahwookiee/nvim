@@ -67,13 +67,13 @@ return {
           },
         },
       },
-      ---@type vim.lsp.Config
+      -- ---@type vim.lsp.Config
       -- ty = {
       --   settings = {
       --     ty = {
       --       diagnosticMode = "workspace",
+      --       completions = { autoImport = true },
       --       inlayHints = { variableTypes = false, callArgumentNames = false },
-      --       experimental = { rename = true, autoImport = true },
       --     },
       --   },
       -- },
@@ -96,11 +96,12 @@ return {
           },
           python = {
             analysis = {
+              exclude = { ".venv" },
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
               autoImportCompletions = true,
               typeCheckingMode = "standard",
-              diagnosticMode = "openFilesOnly",
+              diagnosticMode = "workspace",
             },
           },
         },

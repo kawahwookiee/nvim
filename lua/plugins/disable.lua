@@ -10,5 +10,6 @@ if true then
     { "nvim-ts-autotag", enabled = false },
     { "persistence.nvim", enabled = false },
     { "neo-tree.nvim", enabled = false },
+    { "trouble.nvim", enabled = false },
   }
 end

@@ -3,7 +3,7 @@ return {
   priority = 1000,
   lazy = false,
   init = function()
-    require("aerial").setup({ attach_mode = "global", backends = { "lsp", "treesitter", "markdown", "man" } })
+    -- require("aerial").setup({ attach_mode = "global", backends = { "lsp", "treesitter", "markdown", "man" } })
   end,
   opts = function()
     ---@type snacks.picker.layout.Config
@@ -98,11 +98,23 @@ return {
   end,
   keys = {
     {
-      "<C-t>",
+      "<leader>xx",
       function()
-        require("aerial").snacks_picker({ layout = "right" })
+        Snacks.picker.diagnostics_buffer({})
       end,
-      desc = "Aerial (Symbols)",
+      desc = "Diagnostics (Buffer)",
+    },
+    {
+      "<leader>xX",
+      function()
+        Snacks.picker.diagnostics({})
+      end,
+      desc = "Diagnostics",
+    },
+    {
+      "<leader>t",
+      LazyVim.pick("lsp_symbols", { workspace = false }),
+      desc = "Symbols",
     },
     { "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
     { "<leader><space>", false },
