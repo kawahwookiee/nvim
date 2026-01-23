@@ -39,7 +39,7 @@ return {
       indent = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = false },
-      statuscolumn = { enabled = true },
+      statuscolumn = { enabled = false },
       words = { enabled = true },
       terminal = { enabled = true },
       gitbrowse = {

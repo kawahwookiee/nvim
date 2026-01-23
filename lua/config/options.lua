@@ -4,18 +4,18 @@
 
 vim.api.nvim_command("set mouse=")
 vim.opt.clipboard = "unnamed,unnamedplus"
--- vim.g.python3_host_prog = "python3"
 vim.o.termguicolors = true
 vim.g.lazyvim_picker = "snacks"
 vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver100-Cursor,r-cr-o:hor20"
 
 -- [[ Context ]]
--- vim.g.autoformat = false
-vim.opt.number = true -- bool: Show line numbers
--- vim.opt.numberwidth = 3
 vim.opt.relativenumber = false
 vim.opt.scrolloff = 4 -- int:  Min num lines of context
 vim.opt.signcolumn = "yes:1" -- str:  Show the sign column
+vim.opt.statuscolumn = "%l %s"
+vim.opt.synmaxcol = 500
+vim.opt.wrap = true
+
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.updatetime = 250
