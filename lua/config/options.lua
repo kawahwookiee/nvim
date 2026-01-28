@@ -7,6 +7,7 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.o.termguicolors = true
 vim.g.lazyvim_picker = "snacks"
 vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver100-Cursor,r-cr-o:hor20"
+vim.g.python3_host_prog = "$HOME/.venvs/neovim/bin/python3"
 
 -- [[ Context ]]
 vim.opt.relativenumber = false
