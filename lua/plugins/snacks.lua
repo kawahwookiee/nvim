@@ -1,6 +1,6 @@
 return {
 	"snacks.nvim",
-	priority = 900,
+	priority = 1000,
 	lazy = false,
 	init = function() end,
 	opts = function()
@@ -28,7 +28,10 @@ return {
 		}
 		---@type snacks.Config
 		local opts = {
+			bigfile = { enabled = true },
+			dim = { enabled = true },
 			lazygit = { enabled = true },
+			rename = { enabled = true },
 			notifier = { enabled = true },
 			notify = { enabled = true },
 			input = { enabled = true },
