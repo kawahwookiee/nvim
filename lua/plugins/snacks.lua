@@ -35,7 +35,7 @@ return {
 			notifier = { enabled = true },
 			notify = { enabled = true },
 			input = { enabled = true },
-			explorer = { enabled = true },
+			explorer = { enabled = true, hidden = true },
 			quickfile = { enabled = true },
 			indent = { enabled = true },
 			scope = { enabled = true },
@@ -56,6 +56,7 @@ return {
 			},
 			picker = {
 				enabled = true,
+				hidden = true,
 				ui_select = true,
 				win = {
 					list = {
