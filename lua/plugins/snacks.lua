@@ -91,7 +91,7 @@ return {
 					---@type snacks.picker.Config
 					explorer = {
 						auto_close = true,
-						layout = { hidden = { "preview", "input" }, auto_hide = { "input" } },
+						layout = { preview = "main", hidden = { "input" }, auto_hide = { "input" } },
 					},
 				},
 			},
