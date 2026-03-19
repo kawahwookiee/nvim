@@ -68,32 +68,64 @@ return {
 				},
 			},
 			---@type vim.lsp.Config
-			ty = {
+			pyrefly = {
 				settings = {
-					ty = {
-						diagnosticMode = "workspace",
-						completions = { autoImport = true },
-						inlayHints = { variableTypes = false, callArgumentNames = false },
+					root_markers = {
+						"pyproject.toml",
+						".venv",
+						"setup.py",
+						"setup.cfg",
+						"requirements.txt",
+					},
+					python = {
+						pyrefly = {
+							displayTypeError = "force-on",
+							diagnosticMode = "workspace",
+						},
 					},
 				},
 			},
+			-- ---@type vim.lsp.Config
+			-- ty = {
+			-- 	settings = {
+			-- 		ty = {
+			-- 			diagnosticMode = "openFilesOnly",
+			-- 			-- completions = { autoImport = true },
+			-- 			-- inlayHints = { variableTypes = false, callArgumentNames = false },
+			-- 		},
+			-- 	},
+			-- },
+			-- ---@type vim.lsp.Config
+			-- basedpyright = {
+			-- 	settings = {
+			-- 		basedpyright = {
+			-- 			disableOrganizeImports = true,
+			-- 			analysis = {
+			-- 				inlayHints = false,
+			-- 				exclude = { ".venv" },
+			-- 				typeCheckingMode = "standard",
+			-- 				diagnosticMode = "openFilesOnly",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			------@type vim.lsp.Config
 			---pyright = {
-			---  settings = {
-			---    pyright = {
-			---      disableOrganizeImports = true,
-			---    },
-			---    python = {
-			---      analysis = {
-			---        exclude = { ".venv" },
-			---        autoSearchPaths = true,
-			---        useLibraryCodeForTypes = true,
-			---        autoImportCompletions = true,
-			---        typeCheckingMode = "standard",
-			---        diagnosticMode = "openFilesOnly",
-			---      },
-			---    },
-			---  },
+			---	settings = {
+			---		pyright = {
+			---			disableOrganizeImports = true,
+			---		},
+			---		python = {
+			---			analysis = {
+			---				exclude = { ".venv" },
+			---				autoSearchPaths = true,
+			---				useLibraryCodeForTypes = true,
+			---				autoImportCompletions = true,
+			---				typeCheckingMode = "standard",
+			---				diagnosticMode = "openFilesOnly",
+			---			},
+			---		},
+			---	},
 			---},
 			---@type vim.lsp.Config
 			gopls = {

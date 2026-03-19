@@ -26,3 +26,4 @@ vim.opt.expandtab = true -- bool: Use spaces instead of tabs
 vim.opt.shiftwidth = 2 -- num:  Size of an indent
 vim.opt.softtabstop = 2 -- num:  Number of spaces tabs count for in insert mode
 vim.opt.tabstop = 2 -- num:  Number of spaces tabs count for
+vim.opt.fixendofline = true
