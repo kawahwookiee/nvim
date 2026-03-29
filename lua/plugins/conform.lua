@@ -31,7 +31,7 @@ return {
 			zsh = {},
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 			go = { "goimports", "gofumpt" },
-			["*"] = { "trim_whitespace" },
+			["*"] = { "trim_whitespace", "trim_newlines" },
 		},
 	},
 }
