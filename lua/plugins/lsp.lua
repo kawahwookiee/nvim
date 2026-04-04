@@ -19,11 +19,12 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = "LazyFile",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"mason.nvim",
 			"mason-org/mason-lspconfig.nvim",
 		},
+		opts_extend = { "servers.*.keys" },
 		---@class PluginLspOpts
 		opts = {
 			---@type vim.diagnostic.Opts
