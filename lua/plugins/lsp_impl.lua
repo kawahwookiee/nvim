@@ -68,6 +68,21 @@ return {
 				},
 			},
 			---@type vim.lsp.Config
+			basedpyright = {
+				mason = false,
+				settings = {
+					basedpyright = {
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							autoImportCompletions = true,
+							inlayHints = false,
+							typeCheckingMode = "standard",
+						},
+					},
+				},
+			},
+			---@type vim.lsp.Config
 			pyrefly = {
 				mason = false,
 				settings = {
