@@ -3,9 +3,17 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
-		fuzzy = { implementation = "prefer_rust_with_warning" },
+		fuzzy = {
+			implementation = "prefer_rust_with_warning",
+			sorts = {
+				"exact",
+				-- defaults
+				"score",
+				"sort_text",
+			},
+		},
 		sources = {
-			default = { "buffer", "lsp", "path", "snippets" },
+			default = { "lsp", "path", "snippets" },
 			per_filetype = {
 				lua = { inherit_defaults = true, "lazydev" },
 			},
@@ -18,10 +26,30 @@ return {
 			},
 			compat = {},
 		},
-		completion = { keyword = { range = "full" } },
+		completion = { list = { max_items = 10, selection = { preselect = false } }, keyword = { range = "full" } },
 		keymap = {
 			preset = "enter",
-			["<Esc>"] = { "hide", "fallback" },
+			["<Tab>"] = {
+				function(cmp)
+					if cmp.snippet_active() then
+						return cmp.accept()
+					else
+						return cmp.select_next()
+					end
+				end,
+				"snippet_forward",
+				"fallback",
+			},
+			["<S-Tab>"] = {
+				function(cmp)
+					if not cmp.snippet_active() then
+						return cmp.select_prev()
+					end
+				end,
+				"snippet_backward",
+				"fallback",
+			},
+			["<Esc>"] = { "cancel", "fallback" },
 			["C-e"] = { "cancel", "fallback" },
 			["<Left>"] = { "cancel", "fallback" },
 			["<Right>"] = { "cancel", "fallback" },
