@@ -26,7 +26,7 @@ return {
 			},
 			compat = {},
 		},
-		completion = { list = { max_items = 10, selection = { preselect = false } }, keyword = { range = "full" } },
+		completion = { list = { max_items = 10, selection = { preselect = true } }, keyword = { range = "full" } },
 		keymap = {
 			preset = "enter",
 			["<Tab>"] = {
