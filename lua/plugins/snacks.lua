@@ -70,7 +70,7 @@ return {
 					},
 					input = {
 						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
+							-- ["<Esc>"] = { "close", mode = { "n", "i" } },
 							["<S-PageDown>"] = { "preview_scroll_down", mode = { "n", "i" } },
 							["<S-PageUp>"] = { "preview_scroll_up", mode = { "n", "i" } },
 							["<PageUp>"] = { "list_scroll_up", mode = { "n", "i" } },
@@ -119,8 +119,36 @@ return {
 			LazyVim.pick("lsp_symbols", { workspace = false }),
 			desc = "Symbols",
 		},
-		{ "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
+		{
+			"<leader>ff",
+			function()
+				require("fff").find_files()
+			end,
+			desc = "FFFFind files",
+		},
+		{
+			"<leader>fF",
+			function()
+				local cur_dir = require("utils").GetCurrentDir()
+				require("fff").find_files({ cwd = cur_dir })
+			end,
+			desc = "FFFFind files (cwd)",
+		},
+		{
+			"<leader>/",
+			function()
+				require("fff").live_grep()
+			end,
+			desc = "LiFFFe grep",
+		},
 		{ "<leader><space>", false },
+		{
+			"<leader>fw",
+			function()
+				require("fff").live_grep({ query = vim.fn.expand("<cword>") })
+			end,
+			desc = "Search current word",
+		},
 		{
 			"<leader>e",
 			function()

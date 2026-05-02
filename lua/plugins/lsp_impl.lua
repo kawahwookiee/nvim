@@ -3,6 +3,13 @@ return {
 	---@class PluginLspOpts
 	opts = {
 		servers = {
+			mojo = {
+				settings = {
+					cmd = { "mojo-lsp-server" },
+					filetypes = { "mojo" },
+					rootMarkers = { ".git", "pyproject.toml", ".venv" },
+				},
+			},
 			---@type vim.lsp.Config
 			rust_analyzer = {
 				settings = {
@@ -86,13 +93,7 @@ return {
 			pyrefly = {
 				mason = false,
 				settings = {
-					root_markers = {
-						"pyproject.toml",
-						".venv",
-						"setup.py",
-						"setup.cfg",
-						"requirements.txt",
-					},
+					root_markers = { "pyproject.toml", ".venv" },
 					python = {
 						pyrefly = {
 							displayTypeError = "force-on",
@@ -104,6 +105,7 @@ return {
 			---@type vim.lsp.Config
 			ty = {
 				mason = false,
+				root_markers = { "pyproject.toml", ".venv" },
 				settings = {
 					ty = {
 						diagnosticMode = "workspace",
