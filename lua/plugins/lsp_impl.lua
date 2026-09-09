@@ -1,8 +1,43 @@
 return {
 	"neovim/nvim-lspconfig",
+	--- XXX: REMOVE AFTER PYREFLY IS FIXED
+	init = function()
+		local register_capability = vim.lsp.handlers["client/registerCapability"]
+
+		vim.lsp.handlers["client/registerCapability"] = function(err, params, ctx, config)
+			local client = vim.lsp.get_client_by_id(ctx.client_id)
+
+			if client and client.name == "pyrefly" then
+				for _, registration in ipairs(params.registrations or {}) do
+					if registration.method == "workspace/didChangeWatchedFiles" then
+						local options = registration.registerOptions
+						options.watchers = options.watchers or {}
+
+						vim.list_extend(options.watchers, {
+							-- WatchKind 7 = create | change | delete.
+							{ globPattern = "**/*.py", kind = 7 },
+							{ globPattern = "**/*.pyi", kind = 7 },
+							{ globPattern = "**/pyproject.toml", kind = 7 },
+							{ globPattern = "**/pyrefly.toml", kind = 7 },
+						})
+					end
+				end
+			end
+
+			return register_capability(err, params, ctx, config)
+		end
+	end,
+	--- XXX: REMOVE AFTER PYREFLY IS FIXED
 	---@class PluginLspOpts
 	opts = {
 		servers = {
+			mojo = {
+				settings = {
+					cmd = { "mojo-lsp-server" },
+					filetypes = { "mojo" },
+					rootMarkers = { ".git", "pyproject.toml", ".venv" },
+				},
+			},
 			---@type vim.lsp.Config
 			rust_analyzer = {
 				settings = {
@@ -68,7 +103,37 @@ return {
 				},
 			},
 			---@type vim.lsp.Config
+			basedpyright = {
+				mason = false,
+				settings = {
+					basedpyright = {
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "openFilesOnly",
+							autoImportCompletions = true,
+							inlayHints = false,
+							typeCheckingMode = "standard",
+						},
+					},
+				},
+			},
+			---@type vim.lsp.Config
+			pyrefly = {
+				mason = false,
+				root_markers = { "pyproject.toml", ".venv" },
+				settings = {
+					python = {
+						pyrefly = {
+							displayTypeErrors = "force-on",
+							diagnosticMode = "workspace",
+						},
+					},
+				},
+			},
+			---@type vim.lsp.Config
 			ty = {
+				mason = false,
+				root_markers = { "pyproject.toml", ".venv" },
 				settings = {
 					ty = {
 						diagnosticMode = "workspace",
@@ -77,24 +142,6 @@ return {
 					},
 				},
 			},
-			------@type vim.lsp.Config
-			---pyright = {
-			---  settings = {
-			---    pyright = {
-			---      disableOrganizeImports = true,
-			---    },
-			---    python = {
-			---      analysis = {
-			---        exclude = { ".venv" },
-			---        autoSearchPaths = true,
-			---        useLibraryCodeForTypes = true,
-			---        autoImportCompletions = true,
-			---        typeCheckingMode = "standard",
-			---        diagnosticMode = "openFilesOnly",
-			---      },
-			---    },
-			---  },
-			---},
 			---@type vim.lsp.Config
 			gopls = {
 				settings = {

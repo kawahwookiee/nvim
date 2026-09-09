@@ -40,6 +40,7 @@ return {
 			indent = { enabled = true },
 			scope = { enabled = true },
 			scroll = { enabled = false },
+			scratch = { enabled = true },
 			statuscolumn = { enabled = false },
 			words = { enabled = true },
 			terminal = { enabled = true },
@@ -69,7 +70,7 @@ return {
 					},
 					input = {
 						keys = {
-							["<Esc>"] = { "close", mode = { "n", "i" } },
+							-- ["<Esc>"] = { "close", mode = { "n", "i" } },
 							["<S-PageDown>"] = { "preview_scroll_down", mode = { "n", "i" } },
 							["<S-PageUp>"] = { "preview_scroll_up", mode = { "n", "i" } },
 							["<PageUp>"] = { "list_scroll_up", mode = { "n", "i" } },
@@ -91,7 +92,7 @@ return {
 					---@type snacks.picker.Config
 					explorer = {
 						auto_close = true,
-						layout = { hidden = { "preview", "input" }, auto_hide = { "input" } },
+						layout = { preview = "main", hidden = { "input" }, auto_hide = { "input" } },
 					},
 				},
 			},
@@ -118,8 +119,6 @@ return {
 			LazyVim.pick("lsp_symbols", { workspace = false }),
 			desc = "Symbols",
 		},
-		{ "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep (cwd)" },
-		{ "<leader><space>", false },
 		{
 			"<leader>e",
 			function()
