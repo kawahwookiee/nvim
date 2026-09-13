@@ -17,14 +17,15 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Global Options ]]
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 require("lazy").setup({
 	spec = {
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		{ "Mofiqul/vscode.nvim", name = "vscode", lazy = false, priority = 1000 },
+		{ "myxik/lovelace.nvim", lazy = false, priority = 1000 },
 		{ "cormacrelf/dark-notify", lazy = false }, -- for macos
 		-- { "f-person/auto-dark-mode.nvim", lazy=false}, -- for linux
-		{ "LazyVim/LazyVim", opts = { colorscheme = "vscode" } },
+		-- { "LazyVim/LazyVim", opts = { colorscheme = "vscode" } },
+		{ "LazyVim/LazyVim", opts = { colorscheme = "lovelace" } },
 		{
 			"folke/lazydev.nvim",
 			ft = "lua",
@@ -51,7 +52,7 @@ require("lazy").setup({
 					sections = {
 						lualine_c = {
 							{ "filename", path = 3 },
-							{ "navic", color_correction = "dynamic" },
+							{ "navic", color_correction = "static" },
 						},
 					},
 					extensions = { "lazy" },
