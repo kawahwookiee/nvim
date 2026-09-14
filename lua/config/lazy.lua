@@ -23,10 +23,11 @@ require("lazy").setup({
 		{ "Mofiqul/vscode.nvim", name = "vscode", lazy = false, priority = 1000 },
 		{ "myxik/lovelace.nvim", lazy = false, priority = 1000 },
 		{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
+		{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 		{ "cormacrelf/dark-notify", lazy = false }, -- for macos
 		-- { "f-person/auto-dark-mode.nvim", lazy=false}, -- for linux
 		-- { "LazyVim/LazyVim", opts = { colorscheme = "vscode" } },
-		{ "LazyVim/LazyVim", opts = { colorscheme = "carbonfox" } },
+		{ "LazyVim/LazyVim", opts = { colorscheme = "lovelace" } },
 		{
 			"folke/lazydev.nvim",
 			ft = "lua",
