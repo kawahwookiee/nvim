@@ -26,8 +26,8 @@ require("lazy").setup({
 		{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 		{ "cormacrelf/dark-notify", lazy = false }, -- for macos
 		-- { "f-person/auto-dark-mode.nvim", lazy=false}, -- for linux
-		-- { "LazyVim/LazyVim", opts = { colorscheme = "vscode" } },
-		{ "LazyVim/LazyVim", opts = { colorscheme = "lovelace" } },
+		{ "LazyVim/LazyVim", opts = { colorscheme = "vscode" } },
+		-- { "LazyVim/LazyVim", opts = { colorscheme = "lovelace" } },
 		{
 			"folke/lazydev.nvim",
 			ft = "lua",

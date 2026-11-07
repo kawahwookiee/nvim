@@ -1,3 +1,13 @@
+vim.filetype.add({
+	filename = {
+		["docker-compose.yml"] = "yaml.docker-compose",
+		["docker-compose.yaml"] = "yaml.docker-compose",
+		["compose.yml"] = "yaml.docker-compose",
+		["compose.yaml"] = "yaml.docker-compose",
+	},
+})
+vim.lsp.enable("docker_language_server")
+
 return {
 	"neovim/nvim-lspconfig",
 	--- XXX: REMOVE AFTER PYREFLY IS FIXED
@@ -31,13 +41,7 @@ return {
 	---@class PluginLspOpts
 	opts = {
 		servers = {
-			mojo = {
-				settings = {
-					cmd = { "mojo-lsp-server" },
-					filetypes = { "mojo" },
-					rootMarkers = { ".git", "pyproject.toml", ".venv" },
-				},
-			},
+			mojo = {},
 			---@type vim.lsp.Config
 			rust_analyzer = {
 				settings = {
@@ -49,28 +53,18 @@ return {
 						},
 						-- Add clippy lints for Rust
 						checkOnSave = false,
-						-- checkOnSave = {
-						--   allFeatures = false,
-						--   command = "clippy",
-						--   extraArgs = { "--no-deps" },
-						-- },
 						files = {
 							excludeDirs = { "target", ".git" },
 						},
 						procMacro = {
 							enable = true,
-							ignored = {
-								-- ["async-trait"] = { "async_trait" },
-								-- ["napi-derive"] = { "napi" },
-								-- ["async-recursion"] = { "async_recursion" },
-							},
+							ignored = {},
 						},
 					},
 				},
 			},
 			---@type vim.lsp.Config
 			lua_ls = {
-				-- mason = false, -- set to false if you don't want this server to be installed with mason
 				-- Use this to add any additional keymaps
 				-- for specific lsp servers
 				-- keys = {},
@@ -103,23 +97,7 @@ return {
 				},
 			},
 			---@type vim.lsp.Config
-			basedpyright = {
-				mason = false,
-				settings = {
-					basedpyright = {
-						analysis = {
-							autoSearchPaths = true,
-							diagnosticMode = "openFilesOnly",
-							autoImportCompletions = true,
-							inlayHints = false,
-							typeCheckingMode = "standard",
-						},
-					},
-				},
-			},
-			---@type vim.lsp.Config
 			pyrefly = {
-				mason = false,
 				root_markers = { "pyproject.toml", ".venv" },
 				settings = {
 					python = {
@@ -129,17 +107,15 @@ return {
 						},
 					},
 				},
-			},
-			---@type vim.lsp.Config
-			ty = {
-				mason = false,
-				root_markers = { "pyproject.toml", ".venv" },
-				settings = {
-					ty = {
-						diagnosticMode = "workspace",
-						completions = { autoImport = true },
-						inlayHints = { variableTypes = false, callArgumentNames = false },
-					},
+				handlers = {
+					-- project-excludes hides type errors in _archive, but not the IDE-only
+					-- unused-import hints, which pyrefly has no setting for.
+					["textDocument/publishDiagnostics"] = function(err, result, ctx)
+						if result and result.uri:find("/_archive/", 1, true) then
+							result.diagnostics = {}
+						end
+						return vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
+					end,
 				},
 			},
 			---@type vim.lsp.Config
@@ -157,15 +133,6 @@ return {
 							upgrade_dependency = true,
 							vendor = true,
 						},
-						-- hints = {
-						--   assignVariableTypes = true,
-						--   compositeLiteralFields = true,
-						--   compositeLiteralTypes = true,
-						--   constantValues = true,
-						--   functionTypeParameters = true,
-						--   parameterNames = true,
-						--   rangeVariableTypes = true,
-						-- },
 						analyses = {
 							nilness = true,
 							unusedparams = true,

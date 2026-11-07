@@ -50,7 +50,6 @@ return {
 				"fallback",
 			},
 			["<Esc>"] = { "cancel", "fallback" },
-			["C-e"] = { "cancel", "fallback" },
 			["<Left>"] = { "cancel", "fallback" },
 			["<Right>"] = { "cancel", "fallback" },
 		},

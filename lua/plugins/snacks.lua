@@ -58,6 +58,8 @@ return {
 			picker = {
 				enabled = true,
 				hidden = true,
+				-- applies to files, grep and explorer
+				exclude = { "**/_archive" },
 				ui_select = true,
 				win = {
 					list = {
@@ -132,7 +134,7 @@ return {
 				local cur_dir = require("utils").GetCurrentDir()
 				Snacks.picker.explorer({ cwd = cur_dir })
 			end,
-			desc = "File Explorer (Root)",
+			desc = "File Explorer (Buffer Dir)",
 		},
 		{
 			"<leader>st",
