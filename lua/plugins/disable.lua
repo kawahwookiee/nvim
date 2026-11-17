@@ -7,6 +7,4 @@ return {
 	{ "trouble.nvim", enabled = false },
 	{ "tokyonight.nvim", enabled = false },
 	{ "catppuccin", enabled = false },
-	{ "mason.nvim", enabled = false },
-	{ "mason-lspconfig.nvim", enabled = false },
 }

@@ -41,9 +41,10 @@ return {
 	---@class PluginLspOpts
 	opts = {
 		servers = {
-			mojo = {},
+			mojo = { mason = false },
 			---@type vim.lsp.Config
 			rust_analyzer = {
+				mason = false,
 				settings = {
 					["rust-analyzer"] = {
 						cargo = {
@@ -98,6 +99,7 @@ return {
 			},
 			---@type vim.lsp.Config
 			pyrefly = {
+				mason = false,
 				root_markers = { "pyproject.toml", ".venv" },
 				settings = {
 					python = {
@@ -120,6 +122,7 @@ return {
 			},
 			---@type vim.lsp.Config
 			gopls = {
+				mason = false,
 				settings = {
 					gopls = {
 						gofumpt = true,
